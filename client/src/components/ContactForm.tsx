@@ -49,7 +49,7 @@ const ContactForm = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("https://nikhil-new-portfolio.vercel.app//api/contact", {
+      const response = await fetch("https://nikhil-new-portfolio.vercel.app/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

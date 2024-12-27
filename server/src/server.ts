@@ -9,7 +9,15 @@ const app: Express = express();
 const port = process.env.PORT || 3005;
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: [
+    process.env.FRONTEND_URL || "http://localhost:3000",
+    'https://nikhil-new-portfolio.vercel.app',
+    'https://www.nikhil-new-portfolio.vercel.app'
+  ],
+  methods: ['GET', 'POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
