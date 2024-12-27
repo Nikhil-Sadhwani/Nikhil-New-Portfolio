@@ -8,17 +8,35 @@ dotenv.config();
 const app: Express = express();
 const port = process.env.PORT || 3005;
 
-// Middleware
+const allowedOrigins = [
+  'http://localhost:3000',
+  'https://nikhil-new-portfolio.vercel.app',
+  'https://www.nikhil-new-portfolio.vercel.app',
+  /https:\/\/nikhil-new-portfolio-[a-z0-9-]+\.vercel\.app$/
+];
+
 app.use(cors({
-  origin: [
-    process.env.FRONTEND_URL || "http://localhost:3000",
-    'https://nikhil-new-portfolio.vercel.app',
-    'https://www.nikhil-new-portfolio.vercel.app'
-  ],
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true);
+    
+    const isAllowed = allowedOrigins.some(allowedOrigin => 
+      typeof allowedOrigin === 'string' 
+        ? origin === allowedOrigin 
+        : allowedOrigin.test(origin)
+    );
+
+    if (isAllowed) {
+      callback(null, true);
+    } else {
+      console.warn(`Origin ${origin} not allowed by CORS`);
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   methods: ['GET', 'POST', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
 }));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
