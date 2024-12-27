@@ -12,7 +12,7 @@ const allowedOrigins = [
   'http://localhost:3000',
   'https://nikhil-new-portfolio.vercel.app',
   'https://www.nikhil-new-portfolio.vercel.app',
-  /https:\/\/nikhilsadhwani.vercel.app+\.vercel\.app$/
+  'https://nikhilsadhwani.vercel.app'
 ];
 
 app.use(cors({
@@ -20,9 +20,7 @@ app.use(cors({
     if (!origin) return callback(null, true);
     
     const isAllowed = allowedOrigins.some(allowedOrigin => 
-      typeof allowedOrigin === 'string' 
-        ? origin === allowedOrigin 
-        : allowedOrigin.test(origin)
+      origin === allowedOrigin 
     );
 
     if (isAllowed) {
