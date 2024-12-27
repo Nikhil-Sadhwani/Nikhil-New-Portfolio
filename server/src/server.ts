@@ -1,4 +1,4 @@
-import express, { Express } from 'express';
+import express, { Express , Request, Response } from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import { ContactController } from './controllers/contactController';
@@ -20,10 +20,14 @@ const contactController = new ContactController();
 app.post('/api/contact', contactController.handleContact);
 
 // Test route
-app.get('/api/test', (req, res) => {
+app.get('/api/test', (req: Request, res: Response) => {
   res.json({ message: 'Server is running!' });
 });
 
-app.listen(port, () => {
-  console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
-});
+export default app;
+
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(port, () => {
+    console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
+  });
+}
