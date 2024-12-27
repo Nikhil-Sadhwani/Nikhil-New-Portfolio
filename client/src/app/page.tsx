@@ -158,9 +158,9 @@ export default function Home() {
               <div className="max-w-3xl mx-auto space-y-6 text-gray-300 text-center">
                 <p>
                   My name is Nikhil Sadhwani, and I graduated recently with a
-                  BCA. I am currently pursuing an MCA. I'm very eager to do some
+                  BCA. I am currently pursuing an MCA. I&apos;m very eager to do some
                   full-stack development, mostly in MERN Stack technology, with
-                  TypeScript and Tailwind CSS. I'm conversant with quite a
+                  TypeScript and Tailwind CSS. I&apos;m conversant with quite a
                   number of languages, including Python, PHP, MySQL, Java, and
                   many others.
                 </p>
@@ -268,10 +268,10 @@ export default function Home() {
               <div className="space-y-8">
                 <div>
                   <h3 className="text-xl font-semibold text-gray-200 mb-4">
-                    Let's Connect
+                    Let&apos;s Connect
                   </h3>
                   <p className="text-gray-400">
-                    I'm always interested in hearing about new projects and
+                    I&apos;m always interested in hearing about new projects and
                     opportunities. Whether you have a question or just want to
                     say hi, feel free to reach out!
                   </p>

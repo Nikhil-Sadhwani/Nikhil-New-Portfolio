@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import styles from './Background.module.css';
 
 const Background = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);

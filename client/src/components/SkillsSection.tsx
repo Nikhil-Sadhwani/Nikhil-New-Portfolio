@@ -17,6 +17,7 @@ const SkillsSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
 
+  /* eslint-disable react/no-unescaped-entities */
   const skillCategories: SkillCategory[] = [
     {
       title: "Frontend Development",
@@ -29,7 +30,7 @@ const SkillsSection = () => {
         { name: "HTML5/CSS3", icon: "🌐" },
         { name: "Bootstrap", icon: "🎨" },
         { name: "MUI", icon: "🖌️" },
-        { name: "React Native", icon: "📱" }
+        { name: "React Native", icon: "📱" },
       ],
     },
     {
@@ -70,24 +71,29 @@ const SkillsSection = () => {
     },
   ];
 
+  /* eslint-enable react/no-unescaped-entities */
+
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.unobserve(entry.target);
-        }
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+            observer.unobserve(entry.target);
+          }
+        });
       },
       { threshold: 0.1 }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+    const currentSectionRef = sectionRef.current;
+    if (currentSectionRef) {
+      observer.observe(currentSectionRef);
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
+      if (currentSectionRef) {
+        observer.unobserve(currentSectionRef);
       }
     };
   }, []);
