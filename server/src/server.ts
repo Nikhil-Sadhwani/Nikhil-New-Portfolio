@@ -12,7 +12,7 @@ const allowedOrigins = [
   'http://localhost:3000',
   'https://nikhil-new-portfolio.vercel.app',
   'https://www.nikhil-new-portfolio.vercel.app',
-  /https:\/\/nikhil-new-portfolio-[a-z0-9-]+\.vercel\.app$/
+  /https:\/\/nikhilsadhwani.vercel.app+\.vercel\.app$/
 ];
 
 app.use(cors({
